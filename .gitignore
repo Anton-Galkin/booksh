@@ -2,3 +2,7 @@
 /.gitignore
 /bookshop.iml
 /out
+
+.classpath
+.project
+/bin/

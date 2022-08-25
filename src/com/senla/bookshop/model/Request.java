@@ -4,22 +4,30 @@ import java.time.LocalDate;
 
 public class Request {
 
-    private int id;
-    private LocalDate requestDate;
-    private boolean completed = false;
+	private int id;
+	private LocalDate requestDate;
+	private Book book;
+	private boolean completed = false;
 
-    private Request(LocalDate requestDate) {
-        this.requestDate = requestDate;
-    }
-    public int getId() {
-        return 0; //TODO completing
-    }
+	private Request(int id) {
+		this.id = id;
+	}
 
-    public boolean getRequestCompleted() {
-        return completed;
-    }
+	private Request(int id, LocalDate requestDate, Book book) {
+		this(id);
+		this.requestDate = requestDate;
+		this.book = book;
+	}
 
-    public boolean setRequestCompleted() {
-        return this.completed = true;
-    }
+	public int getId() {
+		return 0; // TODO completing
+	}
+
+	public boolean getRequestCompleted() {
+		return completed;
+	}
+
+	public boolean setRequestCompleted() {
+		return this.completed = true;
+	}
 }
