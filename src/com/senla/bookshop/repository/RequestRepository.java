@@ -4,6 +4,7 @@ import com.senla.bookshop.model.Book;
 import com.senla.bookshop.model.Request;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class RequestRepository {
@@ -23,27 +24,34 @@ public class RequestRepository {
         return Optional.empty();
     }
 
-    public boolean remove(int id) {
+
+    public void remove(Request request) {
+        requests.remove(request);
+    }
+
+    public void remove(int id) {
         for (Request request : requests) {
             if (request.getId() == id) {
-                return requests.remove(request);
+                requests.remove(request);
+                return;
             }
         }
-
-        return false;
     }
 
-    public boolean remove(Request request) {
-        return requests.remove(request);
-    }
-
-    public boolean update(Request request) {
+    public void update(Request request) {
         remove(request.getId());
-        return requests.add(request);
+        requests.add(request);
     }
 
     public int getNexId() {
         return requests.size();
     }
 
+    public List<Request> getAll() {
+        return requests;
+    }
+
+    public boolean contains(Request request) {
+        return requests.contains(request);
+    }
 }
