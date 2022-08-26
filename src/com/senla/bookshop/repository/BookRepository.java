@@ -3,47 +3,56 @@ package com.senla.bookshop.repository;
 import com.senla.bookshop.model.Book;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class BookRepository {
-    private ArrayList<Book> books = new ArrayList<>();
+	private ArrayList<Book> books = new ArrayList<>();
 
-    public boolean add(Book book) {
-        return books.add(book);
-    }
+	public int add(Book book) {
+		book.setId(getNexId());
+		books.add(book);
+		return book.getId();
+	}
 
-    public Optional<Book> get(int id) {
-        for (Book book : books) {
-            if (book.getId() == id) {
-                return Optional.of(book);
-            }
-        }
+	public boolean contains(Book book) {
+		return books.contains(book);
+	}
 
-        return Optional.empty();
-    }
+	public Optional<Book> get(int id) {
+		for (Book book : books) {
+			if (book.getId() == id) {
+				return Optional.of(book);
+			}
+		}
 
-    public boolean remove(int id) {
-        for (Book book : books) {
-            if (book.getId() == id) {
-                return books.remove(book);
-            }
-        }
+		return Optional.empty();
+	}
 
-        return false;
-    }
+	public List<Book> getAll() {
+		return books;
+	}
 
-    public boolean remove(Book book) {
-        return books.remove(book);
-    }
+	public void remove(Book book) {
+		books.remove(book);
+	}
 
-    public boolean update(Book book) {
-        remove(book.getId());
-        return books.add(book);
-    }
+	public void remove(int id) {
+		for (Book book : books) {
+			if (book.getId() == id) {
+				books.remove(book);
+				return;
+			}
+		}
+	}
 
-    public int getNexId() {
-        return books.size();
-    }
+	public void update(Book book) {
+		remove(book.getId());
+		books.add(book);
+	}
+
+	private int getNexId() {
+		return books.size();
+	}
 
 }
-// TODO дописать сервис

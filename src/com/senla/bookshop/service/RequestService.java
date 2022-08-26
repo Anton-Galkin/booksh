@@ -16,5 +16,9 @@ public class RequestService {
     public void leaveRequestBook() { //TODO leave a request for a book
 
     }
+    
+    public void closeRequests(Book book) { //TODO close ALL requests for given book
+    	
+    }
 }
 // TODO дописать
