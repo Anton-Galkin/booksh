@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Book {
 
-	private int id;
+	private Integer id;
 	private String title;
 	private String author;
 	private LocalDate yearPubl;
