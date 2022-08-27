@@ -10,8 +10,14 @@ import java.util.Optional;
 public class RequestRepository {
     private ArrayList<Request> requests = new ArrayList<>();
 
-    public boolean add(Request request) {
-        return requests.add(request);
+    public int add(Request request) {
+        request.setId(getNextId());
+        requests.add(request);
+        return request.getId();
+    }
+
+    private int getNextId() {
+        return requests.size();
     }
 
     public Optional<Request> get(int id) {
@@ -33,7 +39,7 @@ public class RequestRepository {
         for (Request request : requests) {
             if (request.getId() == id) {
                 requests.remove(request);
-                return;
+                return;  //TODO why return?
             }
         }
     }
@@ -52,6 +58,6 @@ public class RequestRepository {
     }
 
     public boolean contains(Request request) {
-        return requests.contains(request);  //TODO проверка
+        return requests.contains(request);
     }
 }

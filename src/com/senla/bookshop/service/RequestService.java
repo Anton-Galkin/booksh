@@ -1,9 +1,6 @@
 package com.senla.bookshop.service;
 
 import com.senla.bookshop.model.Book;
-import com.senla.bookshop.model.Order;
-import com.senla.bookshop.model.OrderStatus;
-import com.senla.bookshop.repository.OrderRepository;
 import com.senla.bookshop.repository.RequestRepository;
 
 public class RequestService {
@@ -15,6 +12,9 @@ public class RequestService {
 
     public void leaveRequestBook() { //TODO leave a request for a book
 
+    }
+
+    public void closeRequests(Book book) {
     }
 }
 // TODO дописать

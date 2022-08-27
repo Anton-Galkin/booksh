@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Request {
 
-	private int id;
+	private Integer id;
 	private LocalDate requestDate;
 	private Book book;
 	private boolean completed = false;
@@ -13,11 +13,11 @@ public class Request {
 
 	}
 
-	private Request(int id) {
+	public Request(int id) {
 		this.id = id;
 	}
 
-	private Request(int id, LocalDate requestDate, Book book) {
+	public Request(int id, LocalDate requestDate, Book book) {
 		this(id);
 		this.requestDate = requestDate;
 		this.book = book;
@@ -41,6 +41,10 @@ public class Request {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public boolean getRequestCompleted() {
