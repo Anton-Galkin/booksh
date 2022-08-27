@@ -52,6 +52,6 @@ public class RequestRepository {
     }
 
     public boolean contains(Request request) {
-        return requests.contains(request);  //TODO
+        return requests.contains(request);  //TODO проверка
     }
 }
