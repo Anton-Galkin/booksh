@@ -27,6 +27,6 @@ public class ApplicationStarter {
 	}
 
 	public static RequestService getRequestService() {
-		return null; // TODO 
+		return requestService;
 	}
 }

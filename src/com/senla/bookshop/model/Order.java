@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Order {
 
-	private int id;
+	private Integer id;
 
 	private OrderStatus status = OrderStatus.NEW;
 
