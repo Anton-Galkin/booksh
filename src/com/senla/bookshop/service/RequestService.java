@@ -11,7 +11,7 @@ public class RequestService {
     }
 
     public void leaveRequestBook() { //TODO leave a request for a book
-
+        //if there are no books, leave a request for it
     }
 
     public void closeRequests(Book book) {
