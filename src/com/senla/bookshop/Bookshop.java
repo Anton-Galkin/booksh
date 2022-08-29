@@ -2,23 +2,24 @@ package com.senla.bookshop;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
-import com.senla.bookshop.model.ApplicationStarter;
-import com.senla.bookshop.model.Book;
-import com.senla.bookshop.model.ConsoleView;
-import com.senla.bookshop.model.Order;
-import com.senla.bookshop.model.OrderStatus;
+import com.senla.bookshop.model.*;
 import com.senla.bookshop.service.BookService;
 import com.senla.bookshop.service.OrderService;
 import com.senla.bookshop.service.RequestService;
 
 public class Bookshop {
 
-	public BookService bookService;
-	public OrderService orderService;
-	public RequestService requestService;
+	private BookService bookService;
+	private OrderService orderService;
+	private RequestService requestService;
 
-	public ConsoleView consoleView = new ConsoleView();
+	private ConsoleView consoleView = new ConsoleView();
+
+	private Book b1 = new Book("Python for beginners", "A. Galkin", LocalDate.of(1986, Month.MAY, 16));
+
+	private Book b2 = new Book("Java for Python developers", "V. Bolshov", LocalDate.now());
 
 	public static void main(String[] args) {
 		new Bookshop().start();
@@ -31,18 +32,17 @@ public class Bookshop {
 
 		addBooks();
 		testBookService();
-//		testOrderService();
+		testOrderService();
+		testRequestService();
 	}
 
 	public void addBooks() {
-		Book b1 = new Book("Python for beginners", "A. Galkin", LocalDate.of(1986, Month.MAY, 16));
-		Book b2 = new Book("Java for Python developers", "V. Bolshov", LocalDate.now());
-
 		bookService.addBook(b1);
 		bookService.addBook(b2);
 	}
 
 	public void testBookService() {
+		System.out.println("Test book service");
 		System.out.println("All books :");
 
 		for (Book b : bookService.getAll()) {
@@ -62,14 +62,24 @@ public class Bookshop {
 	}
 
 	public void testOrderService() {
-		orderService.createOrder(null);
+		int id = orderService.addOrder(List.of(b1, b2));
+		Order order = orderService.getOrder(id);
+		orderService.addOrder(List.of(b1));
+		System.out.println("Test order service!");
+		consoleView.displayOrder(order);
+		orderService.changeOrderStatus(order, OrderStatus.COMPLETED);
+		order = orderService.getOrder(id);
+		consoleView.displayOrder(order);
+		orderService.remove(id);
+//		order = orderService.getOrder(id);
+//		consoleView.displayOrder(order);
+	}
 
-		Order order = orderService.getOrder(0);
-
-		System.out.println("old status - " + order.getStatus().toString());
-
-		orderService.changeOrderStatus(order, OrderStatus.CANCELED);
-
-		System.out.println("new status - " + order.getStatus().toString());
+	public void testRequestService() {
+		b1.setAvailable(false);
+		int id = requestService.addRequest(b1);
+		Request request = requestService.getRequest(id);
+		System.out.println("Test request service!");
+		consoleView.displayRequest(request);
 	}
 }

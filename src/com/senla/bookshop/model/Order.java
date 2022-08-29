@@ -1,6 +1,6 @@
 package com.senla.bookshop.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 
@@ -8,13 +8,13 @@ public class Order {
 
 	private OrderStatus status = OrderStatus.NEW;
 
-	private ArrayList<Book> books;
+	private List<Book> books;
 
 	public Order(int id) {
 		this.id = id;
 	}
 
-	public Order(int id, ArrayList<Book> books) {
+	public Order(int id, List<Book> books) {
 		this(id);
 		this.books = books;
 	}
@@ -31,4 +31,7 @@ public class Order {
 		return status;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 }

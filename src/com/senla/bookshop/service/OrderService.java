@@ -1,6 +1,7 @@
 package com.senla.bookshop.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.senla.bookshop.model.Book;
@@ -16,18 +17,22 @@ public class OrderService {
 		this.repository = repository;
 	}
 
-	public boolean createOrder(ArrayList<Book> books) {
+	public int addOrder(List<Book> books) {
 		Order order = new Order(repository.getNexId(), books);
 		return repository.add(order);
 	}
 
-	public boolean remove(Order order) {
-		return repository.remove(order);
+	public void remove(Order order) {
+		repository.remove(order);
 	}
 
-	public boolean changeOrderStatus(Order order, OrderStatus status) {
+	public void remove(int id) {
+		repository.remove(id);
+	}
+
+	public void changeOrderStatus(Order order, OrderStatus status) {
 		order.setStatus(status);
-		return repository.update(order);
+		repository.update(order);
 	}
 
 	public Order getOrder(int id) {

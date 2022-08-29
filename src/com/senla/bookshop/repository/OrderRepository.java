@@ -9,8 +9,10 @@ public class OrderRepository {
 
 	private ArrayList<Order> orders = new ArrayList<>();
 
-	public boolean add(Order order) {
-		return orders.add(order);
+	public int add(Order order) {
+		order.setId(getNexId());
+		orders.add(order);
+		return order.getId();
 	}
 
 	public Optional<Order> get(int id) {
@@ -23,23 +25,22 @@ public class OrderRepository {
 		return Optional.empty();
 	}
 
-	public boolean remove(int id) {
+	public void remove(int id) {
 		for (Order order : orders) {
 			if (order.getId() == id) {
-				return orders.remove(order);
+				orders.remove(order);
+				return;
 			}
 		}
-
-		return false;
 	}
 
-	public boolean remove(Order order) {
-		return orders.remove(order);
+	public void remove(Order order) {
+		orders.remove(order);
 	}
 
-	public boolean update(Order order) {
+	public void update(Order order) {
 		remove(order.getId());
-		return orders.add(order);
+		orders.add(order);
 	}
 
 	public int getNexId() {

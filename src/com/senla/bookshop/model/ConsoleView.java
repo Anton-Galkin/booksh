@@ -18,16 +18,20 @@ public class ConsoleView {
 		StringBuilder builder = new StringBuilder();
 
 		builder.append("id : ").append(order.getId()).append("\n");
-		builder.append("id : ").append(order.getStatus()).append("\n");
+		builder.append("status : ").append(order.getStatus()).append("\n");
+
+		System.out.println(builder.toString());
 	}
 
 	public void displayRequest(Request request) {
 		StringBuilder builder = new StringBuilder();
 
 		builder.append("id : ").append(request.getId()).append("\n");
-		builder.append("id : ").append(request.getRequestDate()).append("\n");
-		builder.append("id : ").append(request.getRequestCompleted()).append("\n");
-		builder.append("id : ").append(request.getBook()).append("\n");
+		builder.append("request date : ").append(request.getRequestDate()).append("\n");
+		builder.append("request completed : ").append(request.getRequestCompleted()).append("\n");
+		builder.append("book : ").append(request.getBook().getTitle()).append("\n");
+
+		System.out.println(builder.toString());
 	}
 
 }
