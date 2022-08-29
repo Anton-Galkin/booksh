@@ -15,11 +15,19 @@ public class ConsoleView {
 	}
 
 	public void displayOrder(Order order) {
-		// TODO
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("id : ").append(order.getId()).append("\n");
+		builder.append("id : ").append(order.getStatus()).append("\n");
 	}
 
 	public void displayRequest(Request request) {
-		// TODO
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("id : ").append(request.getId()).append("\n");
+		builder.append("id : ").append(request.getRequestDate()).append("\n");
+		builder.append("id : ").append(request.getRequestCompleted()).append("\n");
+		builder.append("id : ").append(request.getBook()).append("\n");
 	}
 
 }

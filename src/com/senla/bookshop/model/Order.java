@@ -31,7 +31,4 @@ public class Order {
 		return status;
 	}
 
-	// TODO getters and setters
-
-
 }
