@@ -10,6 +10,7 @@ public class ConsoleView {
 		builder.append("author : ").append(book.getAuthor()).append("\n");
 		builder.append("year of publication : ").append(book.getYearPubl().toString()).append("\n");
 		builder.append("availability : ").append(book.isAvailable()).append("\n");
+		builder.append("price : ").append(book.getPrice()).append("\n");
 
 		System.out.println(builder.toString());
 	}

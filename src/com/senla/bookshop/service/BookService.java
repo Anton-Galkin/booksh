@@ -1,10 +1,14 @@
 package com.senla.bookshop.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import com.senla.bookshop.model.Book;
+import com.senla.bookshop.model.*;
 import com.senla.bookshop.repository.BookRepository;
+
+import static java.util.Collections.*;
 
 public class BookService {
 	private BookRepository repository;
@@ -48,5 +52,33 @@ public class BookService {
 	
 	public void setRequestService(RequestService requestService) {
 		this.requestService = requestService;
+	}
+
+	public List<Book> getAllSortByAlphabet() {
+		List<Book> list = new ArrayList<>();
+		list.addAll(repository.getAll());
+		list.sort(new SortBookByAlphabet());
+		return list;
+	}
+
+	public List<Book> getAllSortByPrice() {
+		List<Book> list = new ArrayList<>();
+		list.addAll(repository.getAll());
+		list.sort(new SortBookByPrice());
+		return list;
+	}
+
+	public List<Book> getAllSortByPublYear() {
+		List<Book> list = new ArrayList<>();
+		list.addAll(repository.getAll());
+		list.sort(new SortBookByPublYear());
+		return list;
+	}
+
+	public List<Book> getAllSortByAvailabel() {
+		List<Book> list = new ArrayList<>();
+		list.addAll(repository.getAll());
+		list.sort(new SortBookByAvailable());
+		return list;
 	}
 }

@@ -26,7 +26,7 @@ public class Book {
 		this.title = title;
 		this.author = author;
 		this.yearPubl = yearPubl;
-//		this.price = price;
+		this.price = price;
 	}
 
 	@Override

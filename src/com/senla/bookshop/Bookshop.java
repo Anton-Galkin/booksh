@@ -39,6 +39,7 @@ public class Bookshop {
 	public void addBooks() {
 		bookService.addBook(b1);
 		bookService.addBook(b2);
+		bookService.addBook(b3);
 	}
 
 	public void testBookService() {
@@ -46,6 +47,30 @@ public class Bookshop {
 		System.out.println("All books :");
 
 		for (Book b : bookService.getAll()) {
+			consoleView.displayBook(b);
+		}
+
+		System.out.println("All books sorted by alphabet :");
+
+		for (Book b : bookService.getAllSortByAlphabet()) {
+			consoleView.displayBook(b);
+		}
+
+		System.out.println("All books sorted by price :");
+
+		for (Book b : bookService.getAllSortByPrice()) {
+			consoleView.displayBook(b);
+		}
+
+		System.out.println("All books sorted by date of publication :");
+
+		for (Book b : bookService.getAllSortByPublYear()) {
+			consoleView.displayBook(b);
+		}
+
+		System.out.println("All books sorted by availabel :"); //TODO check the method
+
+		for (Book b : bookService.getAllSortByAvailabel()) {
 			consoleView.displayBook(b);
 		}
 
