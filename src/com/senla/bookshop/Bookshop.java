@@ -17,9 +17,9 @@ public class Bookshop {
 
 	private ConsoleView consoleView = new ConsoleView();
 
-	private Book b1 = new Book("Python for beginners", "A. Galkin", LocalDate.of(1986, Month.MAY, 16));
-
-	private Book b2 = new Book("Java for Python developers", "V. Bolshov", LocalDate.now());
+	private Book b1 = new Book("Python for beginners", "A. Galkin", LocalDate.of(1986, Month.MAY, 16), 10f);
+	private Book b2 = new Book("War and peace", "L. Tolstoy", LocalDate.of(1869, Month.JANUARY, 1), 20f);
+	private Book b3 = new Book("Eugene Onegin", "A. Pushkin", LocalDate.of(1831, Month.OCTOBER, 5), 15f);
 
 	public static void main(String[] args) {
 		new Bookshop().start();

@@ -11,19 +11,22 @@ public class Book {
 	private LocalDate yearPubl;
 	private boolean available = true;
 
+	private Float price; //Field can be converted to a local variable
+
 	public Book() {
 
 	}
 
-	public Book(int id, String title, String author, LocalDate yearPubl) {
-		this(title, author, yearPubl);
+	public Book(int id, String title, String author, LocalDate yearPubl, Float price) {
+		this(title, author, yearPubl, price);
 		this.id = id;
 	}
 
-	public Book(String title, String author, LocalDate yearPubl) {
+	public Book(String title, String author, LocalDate yearPubl, Float price) {
 		this.title = title;
 		this.author = author;
 		this.yearPubl = yearPubl;
+//		this.price = price;
 	}
 
 	@Override
@@ -84,4 +87,11 @@ public class Book {
 		this.yearPubl = yearPubl;
 	}
 
+	public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
 }
