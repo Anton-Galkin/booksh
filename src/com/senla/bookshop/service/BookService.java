@@ -55,10 +55,7 @@ public class BookService {
 	}
 
 	public List<Book> getAllSortByAlphabet() {
-		List<Book> list = new ArrayList<>();
-		list.addAll(repository.getAll());
-		list.sort(new SortBookByAlphabet());
-		return list;
+		return repository.getAllSortByAlphabet();
 	}
 
 	public List<Book> getAllSortByPrice() {
