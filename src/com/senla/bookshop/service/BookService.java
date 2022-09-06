@@ -59,23 +59,14 @@ public class BookService {
 	}
 
 	public List<Book> getAllSortByPrice() {
-		List<Book> list = new ArrayList<>();
-		list.addAll(repository.getAll());
-		list.sort(new SortBookByPrice());
-		return list;
+		return repository.getAllSortByPrice();
 	}
 
 	public List<Book> getAllSortByPublYear() {
-		List<Book> list = new ArrayList<>();
-		list.addAll(repository.getAll());
-		list.sort(new SortBookByPublYear());
-		return list;
+		return repository.getAllSortByYearPubl();
 	}
 
 	public List<Book> getAllSortByAvailabel() {
-		List<Book> list = new ArrayList<>();
-		list.addAll(repository.getAll());
-		list.sort(new SortBookByAvailable());
-		return list;
+		return repository.getAllSortByAvailable();
 	}
 }

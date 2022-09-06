@@ -1,7 +1,6 @@
 package com.senla.bookshop.repository;
 
 import com.senla.bookshop.model.Book;
-import com.senla.bookshop.model.SortBookByAlphabet;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -47,6 +46,56 @@ public class BookRepository {
 			}
 		});
 		
+		return list;
+	}
+
+	public List<Book> getAllSortByPrice() {
+		List<Book> list = new ArrayList<>();
+		list.addAll(books);
+
+		list.sort(new Comparator<Book>() {
+
+			@Override
+			public int compare(Book book1, Book book2) {
+				return book1.getPrice().compareTo(book2.getPrice());
+			}
+		});
+
+		return list;
+	}
+
+	public List<Book> getAllSortByYearPubl() {
+		List<Book> list = new ArrayList<>();
+		list.addAll(books);
+
+		list.sort(new Comparator<Book>() {
+
+			@Override
+			public int compare(Book book1, Book book2) {
+				return book1.getYearPubl().compareTo(book2.getYearPubl());
+			}
+		});
+
+		return list;
+	}
+
+	public List<Book> getAllSortByAvailable() { //TODO check the method
+		List<Book> list = new ArrayList<>();
+		list.addAll(books);
+
+		list.sort(new Comparator<Book>() {
+
+			@Override
+			public int compare(Book book1, Book book2) {
+				if (book1.isAvailable() && book2.isAvailable() || !book1.isAvailable() && !book2.isAvailable()) {
+					return 0;
+				}
+				if (book1.isAvailable() && !book2.isAvailable())
+					return 1;
+				return -1;
+			}
+		});
+
 		return list;
 	}
 

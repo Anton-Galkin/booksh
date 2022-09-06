@@ -68,7 +68,7 @@ public class Bookshop {
 			consoleView.displayBook(b);
 		}
 
-		System.out.println("All books sorted by availabel :"); //TODO check the method
+		System.out.println("All books sorted by availabel :");
 
 		for (Book b : bookService.getAllSortByAvailabel()) {
 			consoleView.displayBook(b);
