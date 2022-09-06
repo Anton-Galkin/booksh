@@ -1,9 +1,11 @@
 package com.senla.bookshop.repository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import com.senla.bookshop.model.Order;
 import com.senla.bookshop.model.Request;
 
 public class RequestRepository {
@@ -37,7 +39,7 @@ public class RequestRepository {
 		for (Request request : requests) {
 			if (request.getId() == id) {
 				requests.remove(request);
-				return; // TODO why return? 
+				return;
 			}
 		}
 	}
@@ -53,5 +55,33 @@ public class RequestRepository {
 
 	private int getNextId() {
 		return requests.size();
+	}
+
+	public List<Request> getAllSortByAlphabet() {
+		List<Request> list = new ArrayList<>();
+		list.addAll(requests);
+
+		list.sort(new Comparator<Request>() {
+
+			@Override
+			public int compare(Request request1, Request request2) {
+				return request1.getBook().getTitle().compareTo(request2.getBook().getTitle());
+			}
+		});
+		return list;
+	}
+
+	public List<Request> getAllSortByQuantity() { //TODO add field QUANTITY
+		List<Request> list = new ArrayList<>();
+		list.addAll(requests);
+
+		list.sort(new Comparator<Request>() {
+
+			@Override
+			public int compare(Request request1, Request request2) {
+				return request1.getBook().getTitle().compareTo(request2.getBook().getTitle());
+			}
+		});
+		return list;
 	}
 }

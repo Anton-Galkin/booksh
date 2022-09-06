@@ -39,4 +39,16 @@ public class OrderService {
 		Optional<Order> optional = repository.get(id);
 		return optional.get();
 	}
+
+	public List<Order> getAllSortByDateExecution() {
+		return repository.getAllSortByDateExecution();
+	}
+
+	public List<Order> getAllSortByOrderPrice() {
+		return repository.getAllSortByOrderPrice();
+	}
+
+	public List<Order> getAllSortByOrderStatus() {
+		return repository.getAllSortByOrderStatus();
+	}
 }

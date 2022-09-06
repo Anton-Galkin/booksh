@@ -79,7 +79,7 @@ public class BookRepository {
 		return list;
 	}
 
-	public List<Book> getAllSortByAvailable() { //TODO check the method
+	public List<Book> getAllSortByAvailable() {
 		List<Book> list = new ArrayList<>();
 		list.addAll(books);
 
