@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Optional;
-import java.util.Set;
-import java.util.SortedSet;
 
 import com.senla.bookshop.model.Book;
 import com.senla.bookshop.model.Request;
@@ -55,38 +54,45 @@ public class RequestRepository {
 		return list;
 	}
 
-	public List<Request> getAllSortByQuantity() { // TODO add field QUANTITY
+	public List<Request> getAllSortByQuantity() {
 		List<Request> list = new ArrayList<>();
-		list.addAll(requests);
-
-//		list.sort(new Comparator<Request>() {
-//
-//			@Override
-//			public int compare(Request request1, Request request2) {
-//				return request1.getBook().getTitle().compareTo(request2.getBook().getTitle());
-//			}
-//		});
-		
 		HashMap<Book, Integer> requestMap = new HashMap<Book, Integer>();
-		
+
 		for (Request request : requests) {
-//			if (!requestMap.containsKey(request.getBook())) {
-//				requestMap.put(request.getBook(), 1);
-//			} else {
-//				requestMap.
-//			}
-			
+
 			Integer i = requestMap.putIfAbsent(request.getBook(), 1);
-			
+
 			if (i != null) {
 				requestMap.put(request.getBook(), ++i);
 			}
-			
-			Set<Entry<Book, Integer>> entrySet = requestMap.entrySet();
-			
-			
 		}
-		
+
+		LinkedList<Entry<Book, Integer>> entrys = new LinkedList<>(requestMap.entrySet());
+
+		Collections.sort(entrys, new Comparator<Entry<Book, Integer>>() {
+
+			@Override
+			public int compare(Entry<Book, Integer> e1, Entry<Book, Integer> e2) {
+				return e1.getValue().compareTo(e2.getValue()) * -1;
+			}
+		});
+
+		for (Entry<Book, Integer> entry : entrys) {
+			list.addAll(getRequests(entry.getKey()));
+		}
+
+		return list;
+	}
+
+	public List<Request> getRequests(Book book) {
+		List<Request> list = new ArrayList<>();
+
+		for (Request request : requests) {
+			if (request.getBook().equals(book)) {
+				list.add(request);
+			}
+		}
+
 		return list;
 	}
 

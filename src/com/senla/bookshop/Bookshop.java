@@ -31,9 +31,10 @@ public class Bookshop {
 		requestService = ApplicationStarter.getRequestService();
 
 		addBooks();
-		testBookService();
-		testOrderService();
-		testRequestService();
+//		testBookService();
+//		testOrderService();
+//		testRequestService();
+		testRequestGetAllSortByQuantity();
 	}
 
 	public void addBooks() {
@@ -106,5 +107,22 @@ public class Bookshop {
 		Request request = requestService.getRequest(id);
 		System.out.println("Test request service!");
 		consoleView.displayRequest(request);
+	}
+
+	public void testRequestGetAllSortByQuantity() {
+		b1.setAvailable(false);
+		b2.setAvailable(false);
+		b3.setAvailable(false);
+
+		requestService.addRequest(b2);
+		requestService.addRequest(b3);
+		requestService.addRequest(b1);
+		requestService.addRequest(b3);
+		requestService.addRequest(b2);
+		requestService.addRequest(b3);
+
+		for (Request request : requestService.getAllSortByQuantity()) {
+			consoleView.displayRequest(request);
+		}
 	}
 }
