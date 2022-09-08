@@ -56,20 +56,20 @@ public class RequestRepository {
 
 	public List<Request> getAllSortByQuantity() {
 		List<Request> list = new ArrayList<>();
-		HashMap<Book, Integer> requestMap = new HashMap<Book, Integer>();
+		HashMap<Book, Integer> requestQuantityMap = new HashMap<Book, Integer>();
 
 		for (Request request : requests) {
 
-			Integer i = requestMap.putIfAbsent(request.getBook(), 1);
+			Integer i = requestQuantityMap.putIfAbsent(request.getBook(), 1);
 
 			if (i != null) {
-				requestMap.put(request.getBook(), ++i);
+				requestQuantityMap.put(request.getBook(), ++i);
 			}
 		}
 
-		LinkedList<Entry<Book, Integer>> entrys = new LinkedList<>(requestMap.entrySet());
+		LinkedList<Entry<Book, Integer>> requestQuantityList = new LinkedList<>(requestQuantityMap.entrySet());
 
-		Collections.sort(entrys, new Comparator<Entry<Book, Integer>>() {
+		Collections.sort(requestQuantityList, new Comparator<Entry<Book, Integer>>() {
 
 			@Override
 			public int compare(Entry<Book, Integer> e1, Entry<Book, Integer> e2) {
@@ -77,7 +77,7 @@ public class RequestRepository {
 			}
 		});
 
-		for (Entry<Book, Integer> entry : entrys) {
+		for (Entry<Book, Integer> entry : requestQuantityList) {
 			list.addAll(getRequests(entry.getKey()));
 		}
 
